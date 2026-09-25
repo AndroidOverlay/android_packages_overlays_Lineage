@@ -6,6 +6,9 @@
 prebuilt_etc {
     name: "fonts_customization.xml",
 
-    src: "fonts_customization.xml",
+    src: select(soong_config_variable("lineage_pixel", "fonts"), {
+        "true": ":PixelFontsCustomization",
+        default: "fonts_customization.xml",
+    }),
     product_specific: true,
 }
